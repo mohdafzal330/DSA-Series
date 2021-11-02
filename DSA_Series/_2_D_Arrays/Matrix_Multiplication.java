@@ -1,8 +1,9 @@
+package DSA_Series._2_D_Arrays;
+
 import java.util.Scanner;
 
-public class MatrixMultiplication{
-
-public static void main(String[] args) throws Exception {
+public class Matrix_Multiplication {
+    public static void main(String[] args) throws Exception {
     Scanner sc = new Scanner(System.in);
     int n1 = sc.nextInt();
     int m1 = sc.nextInt();
@@ -22,7 +23,9 @@ public static void main(String[] args) throws Exception {
     }
     
     if(m1!=n2){
-        System.out.println("Invalid input"); return;
+        System.out.println("Invalid input");
+        sc.close();
+        return;
     }
     
     int res[][] = new int[n1][m2];
@@ -39,6 +42,7 @@ public static void main(String[] args) throws Exception {
         }
         System.out.println();
     }
- }
 
+    sc.close();
+ }
 }

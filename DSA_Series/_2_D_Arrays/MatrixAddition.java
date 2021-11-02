@@ -1,3 +1,4 @@
+package DSA_Series._2_D_Arrays;
 import java.util.Scanner;
 
 public class MatrixAddition {

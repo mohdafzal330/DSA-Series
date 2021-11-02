@@ -1,6 +1,7 @@
+package DSA_Series._2_D_Arrays;
 import java.util.Scanner;
 
-public class Main{
+public class RotateBy90{
 
 public static void main(String[] args) throws Exception {
     Scanner scn = new Scanner(System.in);

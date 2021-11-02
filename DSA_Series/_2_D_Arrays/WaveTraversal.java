@@ -1,3 +1,4 @@
+package DSA_Series._2_D_Arrays;
 import java.util.Scanner;
 public class WaveTraversal {
 
@@ -19,10 +20,8 @@ public class WaveTraversal {
                     System.out.println(A[j][i]);
                 } else {
                     System.out.println(A[row-j-i][i]);
-                }
-                
-            }
-            
+                }                
+            }            
         }
          
         scn.close();
