@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main_C {
+public class Main {
     public static void main(String[] args){
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
@@ -14,6 +14,6 @@ public class Main_C {
         }
         System.out.println(str);
 
-        scn.close();
+        scn.close(); 
     }
 }
