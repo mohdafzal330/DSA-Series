@@ -1,8 +1,11 @@
+package DSA_Series._2_D_Arrays;
+
 import java.io.File;
 import java.io.PrintStream;
 import java.util.Scanner;
-public class Main {
-    static boolean useFiles = true;
+
+public class ExitPoint_Matrix {
+  static boolean useFiles = true;
     static Scanner scn;
     public static void main(String[] args) throws Exception {
        handleInputOutput(); // To manage I/O form files
@@ -16,30 +19,33 @@ public class Main {
            }
        }
 
-       //   Transpose of matrix
-       for(int i=0;i<rowSize;i++){
-           for(int j=i;j<colSize;j++){
-               int temp = arr[i][j];
-               arr[i][j] = arr[j][i];
-               arr[j][i] = temp;
-           }
+       int i=0,j=0;
+       int dir = 0; // east
+       while(true){
+            dir = (dir + arr[i][j]) % 4;
+
+            if(dir==0){ // East
+                j++;
+            } else if(dir==1){ // South
+                i++;
+            } else if(dir==2){ // West
+                j--;
+            } else if(dir==3){ // North
+                i--;
+            }
+
+            if(i>=rowSize || j>=colSize || i<0 || j<0){
+                i = i<0 ? i + 1 : i;
+                j = j<0 ? j + 1 : j;
+                i = i>=rowSize ? i - 1 : i;
+                j = j>=colSize ? j - 1 : j;               
+
+                System.out.println(i+" "+j);
+                break;
+            }
        }
        
-       //   Reverse all rows of matrix
-       for(int i=0;i<rowSize;i++){
-           for(int j=0;j<colSize/2;j++){
-               int temp = arr[i][j];
-               arr[i][j] = arr[i][colSize-j-1];
-               arr[i][colSize-j-1] = temp;
-           }
-       }
-       //    Printing output
-       for(int i=0;i<rowSize;i++){
-           for(int j=0;j<colSize;j++){
-               System.out.print(arr[i][j]+" ");
-           }
-           System.out.println();
-       }
+
        
         
         scn.close(); // closing scanner resource
@@ -54,5 +60,5 @@ public class Main {
         } else {
             scn = new Scanner(System.in);
         }
-    }
+    }  
 }
