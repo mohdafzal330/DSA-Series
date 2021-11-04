@@ -1,8 +1,9 @@
+package DSA_Series._2_D_Arrays;
+
 import java.util.Scanner;
 
-public class Main {
-
-    public static void main(String[] args) throws Exception {
+public class RingRotate {
+        public static void main(String[] args) throws Exception {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int m = scn.nextInt();
@@ -115,6 +116,5 @@ public class Main {
             }
             System.out.println();
         }
-    }
-
+    }    
 }
