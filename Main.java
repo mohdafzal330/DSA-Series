@@ -1,120 +1,54 @@
+import java.io.File;
+import java.io.PrintStream;
 import java.util.Scanner;
-
 public class Main {
-
+    static boolean useFiles = true;
+    static Scanner scn;
     public static void main(String[] args) throws Exception {
-        Scanner scn = new Scanner(System.in);
-        int n = scn.nextInt();
-        int m = scn.nextInt();
-        int a[][] = new int[n][m];
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                a[i][j] = scn.nextInt();
+       handleInputOutput(); // To manage I/O form files
+
+       int rows = scn.nextInt();
+        int cols = scn.nextInt();
+        int arr[][] = new int[rows][cols];
+
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                arr[i][j] = scn.nextInt();
             }
         }
-        int s = scn.nextInt();
-        int r = scn.nextInt();
-        
-        int arr[] = getOneDFromShell(a,s);
-        rotate(arr,r);
-        fillTwoDShellFromOneD(a,arr,s);
-        display(a);
-    }
-    
-    static int[] getOneDFromShell(int[][] a, int s){
-        int rmin=s-1, cmin=s-1;
-        int rmax=a.length-s, cmax=a[0].length-s;
-        int oneDLength = 2 * (rmax - rmin) + 2 * (cmax-cmin);
-        
-        if(rmin==rmax){
-            int id=0;
-            int oneD[] = new int[cmax-rmax+1];
-            for(int i=cmin;i<=cmax;i++){
-                oneD[id++] = a[rmax][i];
+        // Transpose
+        for(int i=0;i<rows;i++){
+            for(int j=i;j<cols;j++){
+                int temp = arr[i][j];
+                arr[i][j] = arr[j][i];
+                arr[j][i] = temp;
             }
-            return oneD;
-        }
-        
-        
-        int oneD[] = new int[oneDLength];
-        int idx=0;
-        for(int i=rmin;i<=rmax;i++){
-            oneD[idx++] = a[i][cmin];
-        }
-        cmin++;
-        for(int j=cmin;j<=cmax;j++){
-            oneD[idx++] = a[rmax][j];
-        }
-        rmax--;
-        for(int i=rmax;i>=rmin;i--){
-            oneD[idx++] = a[i][cmax];
-        }
-        cmax--;
-        for(int j=cmax;j>=cmin;j--){
-            oneD[idx++] = a[rmin][j];
-        }
-        rmin++;
-        return oneD;
-    }
-   
-    static void fillTwoDShellFromOneD(int[][] a, int[] oneD, int s){
-
-        int rmin=s-1, cmin=s-1;
-        int rmax=a.length-s, cmax=a[0].length-s;
-        int oneDLength = 2 * (rmax - rmin) + 2 * (cmax-cmin);
-        
-        int idx=0;
-        if(rmin==rmax){
-           
-            for(int i=cmin;i<=cmax;i++){
-               a[rmax][i] = oneD[idx++];
+        }  
+        // Reverse all the rows
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols/2;j++){
+                int temp = arr[i][j];
+                arr[i][j] = arr[i][cols-j-1];
+                arr[i][cols-j-1] = temp;
             }
-            return;
         }
-        for(int i=rmin;i<=rmax;i++){
-            a[i][cmin] = oneD[idx++];
-        }
-        cmin++;
-        for(int j=cmin;j<=cmax;j++){
-             a[rmax][j] = oneD[idx++];
-        }
-        rmax--;
-        for(int i=rmax;i>=rmin;i--){
-            a[i][cmax] = oneD[idx++];
-        }
-        cmax--;
-        for(int j=cmax;j>=cmin;j--){
-            a[rmin][j] = oneD[idx++];
-        }
-        rmin++;
-    }
-    
-    static void rotate(int[] a, int r){
-        r = r % a.length;
-        r = r<0 ? r + a.length : r;
-        
-        reverse(a,0,a.length-r-1);
-        reverse(a,a.length-r,a.length-1);
-        reverse(a,0,a.length-1);
-    }
-    
-    static void reverse(int[] a, int start, int end){
-        while(start<=end){
-            int temp = a[start];
-            a[start] = a[end];
-            a[end] = temp;
-            start++; end--;
-        }
-    }
-
-
-    public static void display(int[][] arr){
-        for(int i = 0; i < arr.length; i++){
-            for(int j = 0; j < arr[0].length; j++){
-                System.out.print(arr[i][j] + " ");
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                System.out.print(arr[i][j]+" ");
             }
             System.out.println();
-        }
+        } 
+       scn.close(); // closing scanner resource
     }
 
+
+
+    public static void handleInputOutput() throws Exception{
+        if(useFiles){
+            scn = new Scanner(new File("input.txt"));
+            System.setOut(new PrintStream(new File("output.txt")));
+        } else {
+            scn = new Scanner(System.in);
+        }
+    }
 }
