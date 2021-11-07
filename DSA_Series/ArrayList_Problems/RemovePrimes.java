@@ -1,8 +1,11 @@
+package DSA_Series.ArrayList_Problems;
+
 import java.io.File;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
-public class Main {
+
+public class RemovePrimes {
     static boolean useFiles = true;
     static Scanner scn;
     public static void main(String[] args) throws Exception {
