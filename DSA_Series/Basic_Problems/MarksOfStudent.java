@@ -1,27 +1,26 @@
+package DSA_Series.Basic_Problems;
 import java.io.File;
 import java.io.PrintStream;
 import java.util.Scanner;
-public class Main {
+public class MarksOfStudent {
     static boolean useFiles = true;
     static Scanner scn;
     public static void main(String[] args) throws Exception {
        handleInputOutput(); // To manage I/O form files
-
-       int n = scn.nextInt();
-       int space=n-1,star=1;
-       for(int i=1;i<=n;i++){
-           for(int j=1;j<=space;j++){
-               System.out.print("\t");
-           }
-           for(int j=1;j<=star;j++){
-               System.out.print("*\t");
-           }
-           System.out.println();
-           space--;
-           star++;
-       }
-
-        
+        int marks = scn.nextInt();
+        if(marks>90){
+            System.out.println("excellent");  
+        } else if(marks>80 && marks<=90){
+            System.out.println("good");  
+        } else if(marks>70 && marks<=80){
+            System.out.println("fair");  
+        } else if(marks>60 && marks<=70){
+            System.out.println("meets expectations");  
+        } else{
+          System.out.println("Not a good performer");  
+        }
+       
+       
        scn.close(); // closing scanner resource
     }
 
