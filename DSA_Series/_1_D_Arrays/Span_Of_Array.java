@@ -16,6 +16,7 @@ public static void main(String[] args) throws Exception {
         max = Math.max(max,a[i]);
     }
     System.out.println(max-min);
+    scn.close();
  }  
 
 }
