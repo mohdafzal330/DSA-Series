@@ -1,4 +1,4 @@
-package DSA_Series.ArrayList_Problems;
+package DSA_Series.Strings_SB_ArrayList_Problems;
 
 import java.io.File;
 import java.io.PrintStream;
